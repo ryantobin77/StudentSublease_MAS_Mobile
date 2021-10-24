@@ -9,6 +9,7 @@ import UIKit
 
 class StudentListingObject: NSObject {
 
+    var pk: Int!
     var title: String!
     var address: String!
     var lister: String!
@@ -17,16 +18,15 @@ class StudentListingObject: NSObject {
     var numBed: Int!
     var numBath: Double!
     var amenities: Array<String>!
-    var genderPreference: String!
+    var genderPreference: Int!
     var startDate: String!
     var endDate: String!
-    var rentPerMonth: Double!
+    var rentPerMonth: Int!
     var numTenants: Int!
-    var fees: Double!
-    var numViews: Int!
+    var fees: Int!
     var images: Array<UIImage>!
     
-    init(title: String, address: String, lister: String, listedDate: String, listingDescription: String, numBed: Int, numBath: Double, amenities: Array<String>, genderPreference: String, startDate: String, endDate: String, rentPerMonth: Double, numTenants: Int, fees: Double, numViews: Int, images: Array<UIImage>) {
+    init(pk: Int, title: String, address: String, lister: String, listedDate: String, listingDescription: String, numBed: Int, numBath: Double, amenities: Array<String>, genderPreference: Int, startDate: String, endDate: String, rentPerMonth: Int, numTenants: Int, fees: Int, images: Array<UIImage>) {
         self.title = title
         self.address = address
         self.lister = lister
@@ -41,22 +41,89 @@ class StudentListingObject: NSObject {
         self.rentPerMonth = rentPerMonth
         self.numTenants = numTenants
         self.fees = fees
-        self.numViews = numViews
         self.images = images
     }
     
-    class func getStudentListings() -> Array<StudentListingObject> {
-        var result = Array<StudentListingObject>()
-        
-        result.append(StudentListingObject(title: "The Mark Atlanta", address: "955 Spring St NW, Atlanta, GA 30309", lister: "Ryan Tobin", listedDate: "09/30/2021", listingDescription: "This is a great listing! Please message me to sublease it", numBed: 4, numBath: 4, amenities: ["Pool", "Gym", "Kitchen", "A/C & Heating"], genderPreference: "None", startDate: "05/02/2022", endDate: "08/02/2022", rentPerMonth: 1250, numTenants: 2, fees: 0, numViews: 5, images: [UIImage(named: "TheMark.jpg")!]))
-        
-        result.append(StudentListingObject(title: "The Standard Atlanta", address: "708 Spring St NW, Atlanta, GA 30308", lister: "Tejas Vedantham", listedDate: "09/29/2021", listingDescription: "This is a great listing! Please message me to sublease it", numBed: 3, numBath: 3, amenities: ["Pool", "Gym", "Kitchen", "A/C & Heating"], genderPreference: "None", startDate: "05/05/2022", endDate: "08/05/2022", rentPerMonth: 1100, numTenants: 2, fees: 0, numViews: 5, images: [UIImage(named: "TheStandard.jpg")!]))
-        
-        result.append(StudentListingObject(title: "University House Midtown", address: "930 Spring St NW, Atlanta, GA 30309", lister: "Pooya Nayebi", listedDate: "09/30/2021", listingDescription: "This is a great listing! Please message me to sublease it", numBed: 3, numBath: 3, amenities: ["Pool", "Gym", "Kitchen", "A/C & Heating"], genderPreference: "None", startDate: "06/01/2022", endDate: "09/01/2022", rentPerMonth: 1000, numTenants: 2, fees: 0, numViews: 5, images: [UIImage(named: "UH.jpg")!]))
-        
-        result.append(StudentListingObject(title: "Square on Fifth", address: "848 Spring St NW, Atlanta, GA 30308", lister: "Mith Verma", listedDate: "09/30/2021", listingDescription: "This is a great listing! Please message me to sublease it", numBed: 4, numBath: 4, amenities: ["Pool", "Gym", "Kitchen", "A/C & Heating"], genderPreference: "None", startDate: "05/01/2022", endDate: "09/01/2022", rentPerMonth: 1400, numTenants: 4, fees: 100, numViews: 5, images: [UIImage(named: "SQ5.jpg")!]))
-        
-        return result
+    class func createListing(title: String, street: String, city: String, state: String, zip: String, listingDescription: String, numBed: Int, numBath: Double, startDate: String, endDate: String, rentPerMonth: Int, fees: Int, numTenants: Int, failure: @escaping () -> Void, success: @escaping (_ listing: StudentListingObject?) -> Void) {
+        let webCallTakser: WebCallTasker = WebCallTasker()
+        var params = [String: Any]()
+        params["title"] = title
+        params["street"] = street
+        params["city"] = city
+        params["state"] = state
+        params["zip"] = zip
+        params["lat"] = 33.777180 // Fix hardcode
+        params["long"] = -84.392350 // Fix hardcode
+        params["lister_pk"] = 1 // Fix hardcode
+        params["description"] = listingDescription
+        params["num_bed"] = numBed
+        params["num_bath"] = numBath
+        params["gender_preference"] = 0 // Fix hardcode
+        params["start_date"] = startDate
+        params["end_date"] = endDate
+        params["rent_per_month"] = rentPerMonth
+        params["fees"] = fees
+        params["num_tenants"] = numTenants
+        webCallTakser.makePostRequest(forURL: BackendURL.CREATE_LISTING_PATH, withParams: params, failure: {
+            failure()
+        }, success: {(data, response) in
+            if response.statusCode != 201 {
+                failure()
+                return
+            }
+            let listing = StudentListingObject.parseJson(jsonData: data)
+            success(listing)
+        })
     }
+    
+    class func searchListings(failure: @escaping () -> Void, success: @escaping (_ listings: Array<StudentListingObject>?) -> Void) {
+        let webCallTasker: WebCallTasker = WebCallTasker()
+        webCallTasker.makeGetRequest(forBaseURL: BackendURL.SEARCH_LISTINGS_PATH, withParams:  [String: Any](), failure: {
+            failure()
+        }, success: {(data, response) in
+            if response.statusCode != 200 {
+                failure()
+                return
+            }
+            guard let listings = try? JSONSerialization.jsonObject(with: data) as? Array<[String: Any]> else {
+                failure()
+                return
+            }
+            var result: Array<StudentListingObject> = Array<StudentListingObject>()
+            for listing in listings {
+                guard let listingData = try? JSONSerialization.data(withJSONObject: listing, options: []) else {
+                    continue
+                }
+                if let parsedListing = StudentListingObject.parseJson(jsonData: listingData) {
+                    result.append(parsedListing)
+                }
+            }
+            success(result)
+        })
+    }
+    
+    class func parseJson(jsonData: Data) -> StudentListingObject? {
+        guard let listing_json = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any] else {
+            return nil
+        }
+        let pk = listing_json["pk"] as! Int
+        let title = listing_json["title"] as! String
+        let address = listing_json["address"] as! String
+        let lister = "Ryan Tobin"
+        let listedDate = listing_json["listed_date"] as! String
+        let description = listing_json["description"] as! String
+        let numBed = listing_json["num_bed"] as! Int
+        let numBath = listing_json["num_bath"] as! Double
+        let amenities = listing_json["amenities"] as! Array<String>
+        let genderPreference = listing_json["gender_preference"] as! Int
+        let startDate = listing_json["start_date"] as! String
+        let endDate = listing_json["end_date"] as! String
+        let rentPerMonth = listing_json["rent_per_month"] as! Int
+        let numTenants = listing_json["num_tenants"] as! Int
+        let fees = listing_json["fees"] as! Int
+        let images = [UIImage(named: "TheMark.jpg")!]
+        return StudentListingObject(pk: pk, title: title, address: address, lister: lister, listedDate: listedDate, listingDescription: description, numBed: numBed, numBath: numBath, amenities: amenities, genderPreference: genderPreference, startDate: startDate, endDate: endDate, rentPerMonth: rentPerMonth, numTenants: numTenants, fees: fees, images: images)
+    }
+    
     
 }

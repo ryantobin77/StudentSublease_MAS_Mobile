@@ -18,7 +18,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var searchResults: Array<StudentListingObject>!
     var dimmingView: UIView!
     var selectedStudentListing: StudentListingObject?
-    
+
     @IBAction func menuButtonTapped(_ sender: Any) {
         if (!menuButtonVisible) {
             self.leadingConstraint.constant = 150
@@ -69,9 +69,40 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func getSearchResults() {
+        let loaderView: LoaderView = LoaderView(title: "Loading...", onView: self.dimmingView)
+        self.view.addSubview(loaderView)
+        loaderView.load()
+        StudentListingObject.searchListings(failure: {
+            DispatchQueue.main.async {
+                loaderView.stopLoading()
+                self.searchResults = Array<StudentListingObject>()
+                self.searchResultsTableView.reloadData()
+            }
+        }, success: {(listingsData) in
+            DispatchQueue.main.async {
+                loaderView.stopLoading()
+                self.searchResults = listingsData
+                self.searchResultsTableView.reloadData()
+            }
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.searchResults = Array<StudentListingObject>()
+        self.getSearchResults()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchResults = StudentListingObject.getStudentListings()
+        self.searchResults = Array<StudentListingObject>()
+        
+        self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        self.dimmingView.backgroundColor = .black
+        self.dimmingView.alpha = 0.0
+        self.view.addSubview(self.dimmingView)
+        
         self.searchResultsTableView.delegate = self
         self.searchResultsTableView.dataSource = self
         self.searchResultsTableView.estimatedRowHeight = 335

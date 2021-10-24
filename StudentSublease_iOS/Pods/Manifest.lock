@@ -1,4 +1,5 @@
 PODS:
+  - DLRadioButton (1.4.12)
   - InputBarAccessoryView (5.4.0):
     - InputBarAccessoryView/Core (= 5.4.0)
   - InputBarAccessoryView/Core (5.4.0)
@@ -6,17 +7,20 @@ PODS:
     - InputBarAccessoryView (~> 5.4.0)
 
 DEPENDENCIES:
+  - DLRadioButton (~> 1.4)
   - MessageKit
 
 SPEC REPOS:
   trunk:
+    - DLRadioButton
     - InputBarAccessoryView
     - MessageKit
 
 SPEC CHECKSUMS:
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
   MessageKit: 8e76dd8d65ad44b49e1651c673497146416461e9
 
-PODFILE CHECKSUM: f0a156c97ee8e44abca51d0c45b35c038079ca1d
+PODFILE CHECKSUM: 77a37ac34463be69b53b5859f8e0c4d95c500edf
 
-COCOAPODS: 1.11.1
+COCOAPODS: 1.9.1

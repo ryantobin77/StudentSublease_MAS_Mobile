@@ -20,8 +20,14 @@
 		24FE1B5F270636B0001F2675 /* SQ5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24FE1B5B270636B0001F2675 /* SQ5.jpg */; };
 		24FE1B60270636B0001F2675 /* TheStandard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24FE1B5C270636B0001F2675 /* TheStandard.jpg */; };
 		24FE1B61270636B0001F2675 /* UH.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 24FE1B5D270636B0001F2675 /* UH.jpg */; };
-		24FE1B6327063A9D001F2675 /* CreateListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE1B6227063A9D001F2675 /* CreateListingVC.swift */; };
 		6CB601BBB3A747A9CC17252E /* Pods_StudentSublease_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF9AD64A4C0AC36AA0A8FBF /* Pods_StudentSublease_iOSTests.framework */; };
+		9434A9FB2724A41900E51FD0 /* WebCallTasker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434A9FA2724A41900E51FD0 /* WebCallTasker.swift */; };
+		9434A9FD2724A47500E51FD0 /* BackendURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434A9FC2724A47500E51FD0 /* BackendURL.swift */; };
+		9434AA002724AA7400E51FD0 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434A9FF2724AA7400E51FD0 /* LoaderView.swift */; };
+		9434AA032724AE9700E51FD0 /* CreateListingAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434AA022724AE9700E51FD0 /* CreateListingAddressVC.swift */; };
+		9434AA052724AEB200E51FD0 /* CreateListingPropertyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434AA042724AEB200E51FD0 /* CreateListingPropertyVC.swift */; };
+		9434AA072724AECE00E51FD0 /* CreateListingSubleaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434AA062724AECE00E51FD0 /* CreateListingSubleaseVC.swift */; };
+		9434AA092724AEDF00E51FD0 /* CreateListingFinalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434AA082724AEDF00E51FD0 /* CreateListingFinalVC.swift */; };
 		94AB47192704DFC700C3C805 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB47182704DFC700C3C805 /* AppDelegate.swift */; };
 		94AB471B2704DFC700C3C805 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB471A2704DFC700C3C805 /* SceneDelegate.swift */; };
 		94AB47302704DFC900C3C805 /* StudentSublease_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB472F2704DFC900C3C805 /* StudentSublease_iOSTests.swift */; };
@@ -59,12 +65,18 @@
 		24FE1B5B270636B0001F2675 /* SQ5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SQ5.jpg; sourceTree = "<group>"; };
 		24FE1B5C270636B0001F2675 /* TheStandard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TheStandard.jpg; sourceTree = "<group>"; };
 		24FE1B5D270636B0001F2675 /* UH.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = UH.jpg; sourceTree = "<group>"; };
-		24FE1B6227063A9D001F2675 /* CreateListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingVC.swift; sourceTree = "<group>"; };
 		408650E8910AED0DC64B9662 /* Pods-StudentSublease_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentSublease_iOS.release.xcconfig"; path = "Target Support Files/Pods-StudentSublease_iOS/Pods-StudentSublease_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		41D7E9EC3CCE13F070004742 /* Pods-StudentSublease_iOS-StudentSublease_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentSublease_iOS-StudentSublease_iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-StudentSublease_iOS-StudentSublease_iOSUITests/Pods-StudentSublease_iOS-StudentSublease_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4C8027B36C7B4B2EC46B88B6 /* Pods-StudentSublease_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentSublease_iOSTests.release.xcconfig"; path = "Target Support Files/Pods-StudentSublease_iOSTests/Pods-StudentSublease_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		588D075FC7851C08F291214B /* Pods-StudentSublease_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentSublease_iOS.debug.xcconfig"; path = "Target Support Files/Pods-StudentSublease_iOS/Pods-StudentSublease_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		7A2202F54F1FD80ECDD9DF88 /* Pods_StudentSublease_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudentSublease_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9434A9FA2724A41900E51FD0 /* WebCallTasker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCallTasker.swift; sourceTree = "<group>"; };
+		9434A9FC2724A47500E51FD0 /* BackendURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendURL.swift; sourceTree = "<group>"; };
+		9434A9FF2724AA7400E51FD0 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		9434AA022724AE9700E51FD0 /* CreateListingAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingAddressVC.swift; sourceTree = "<group>"; };
+		9434AA042724AEB200E51FD0 /* CreateListingPropertyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingPropertyVC.swift; sourceTree = "<group>"; };
+		9434AA062724AECE00E51FD0 /* CreateListingSubleaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingSubleaseVC.swift; sourceTree = "<group>"; };
+		9434AA082724AEDF00E51FD0 /* CreateListingFinalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingFinalVC.swift; sourceTree = "<group>"; };
 		94AB47152704DFC700C3C805 /* StudentSublease_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentSublease_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AB47182704DFC700C3C805 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94AB471A2704DFC700C3C805 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +124,7 @@
 		24FE1B402705772D001F2675 /* UI_Layer */ = {
 			isa = PBXGroup;
 			children = (
+				9434A9FE2724AA6500E51FD0 /* Views */,
 				24FE1B59270636B0001F2675 /* Images */,
 				24FE1B4E27062C57001F2675 /* VCs */,
 				24FE1B412705772D001F2675 /* Storyboards */,
@@ -133,7 +146,7 @@
 			children = (
 				24FE1B4F27062C57001F2675 /* SearchCell.swift */,
 				2420D0AE27068AF600B80DB6 /* MessagesVC.swift */,
-				24FE1B6227063A9D001F2675 /* CreateListingVC.swift */,
+				9434AA012724AE4E00E51FD0 /* CreateListing */,
 				24FE1B5027062C57001F2675 /* SearchVC.swift */,
 				2420D0B027068EF100B80DB6 /* ChatViewController.swift */,
 				24FE1B5127062C57001F2675 /* ListingDetailVC.swift */,
@@ -144,7 +157,9 @@
 		24FE1B5527062F48001F2675 /* Business_Layer */ = {
 			isa = PBXGroup;
 			children = (
+				9434A9F92724A3EF00E51FD0 /* Taskers */,
 				24FE1B5627062F48001F2675 /* Models */,
+				9434A9FC2724A47500E51FD0 /* BackendURL.swift */,
 			);
 			path = Business_Layer;
 			sourceTree = "<group>";
@@ -166,6 +181,33 @@
 				24FE1B5D270636B0001F2675 /* UH.jpg */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		9434A9F92724A3EF00E51FD0 /* Taskers */ = {
+			isa = PBXGroup;
+			children = (
+				9434A9FA2724A41900E51FD0 /* WebCallTasker.swift */,
+			);
+			path = Taskers;
+			sourceTree = "<group>";
+		};
+		9434A9FE2724AA6500E51FD0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9434A9FF2724AA7400E51FD0 /* LoaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9434AA012724AE4E00E51FD0 /* CreateListing */ = {
+			isa = PBXGroup;
+			children = (
+				9434AA022724AE9700E51FD0 /* CreateListingAddressVC.swift */,
+				9434AA042724AEB200E51FD0 /* CreateListingPropertyVC.swift */,
+				9434AA062724AECE00E51FD0 /* CreateListingSubleaseVC.swift */,
+				9434AA082724AEDF00E51FD0 /* CreateListingFinalVC.swift */,
+			);
+			path = CreateListing;
 			sourceTree = "<group>";
 		};
 		94AB470C2704DFC700C3C805 = {
@@ -484,14 +526,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9434AA092724AEDF00E51FD0 /* CreateListingFinalVC.swift in Sources */,
+				9434AA032724AE9700E51FD0 /* CreateListingAddressVC.swift in Sources */,
 				24FE1B5327062C57001F2675 /* SearchVC.swift in Sources */,
+				9434AA052724AEB200E51FD0 /* CreateListingPropertyVC.swift in Sources */,
 				24FE1B5827062F48001F2675 /* StudentListingObject.swift in Sources */,
 				24FE1B5427062C57001F2675 /* ListingDetailVC.swift in Sources */,
 				94AB47192704DFC700C3C805 /* AppDelegate.swift in Sources */,
 				2420D0AF27068AF600B80DB6 /* MessagesVC.swift in Sources */,
+				9434AA002724AA7400E51FD0 /* LoaderView.swift in Sources */,
 				24FE1B5227062C57001F2675 /* SearchCell.swift in Sources */,
-				24FE1B6327063A9D001F2675 /* CreateListingVC.swift in Sources */,
+				9434A9FD2724A47500E51FD0 /* BackendURL.swift in Sources */,
 				2420D0B127068EF100B80DB6 /* ChatViewController.swift in Sources */,
+				9434AA072724AECE00E51FD0 /* CreateListingSubleaseVC.swift in Sources */,
+				9434A9FB2724A41900E51FD0 /* WebCallTasker.swift in Sources */,
 				94AB471B2704DFC700C3C805 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
