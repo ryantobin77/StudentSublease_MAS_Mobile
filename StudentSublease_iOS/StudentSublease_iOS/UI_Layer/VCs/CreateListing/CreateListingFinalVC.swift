@@ -9,6 +9,10 @@ import UIKit
 
 class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBAction func backButton(_ sender: Any) {
+    }
+    @IBOutlet weak var back: UIBarButtonItem!
+    @IBOutlet weak var error: UILabel!
     @IBOutlet var photosImageView: UIImageView!
     @IBOutlet var addPhotosButton: UIButton!
     @IBOutlet var titleTextField: UITextField!
@@ -26,6 +30,8 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
     var city: String!
     var state: String!
     var zip: String!
+    var titleField: String! = ""
+    var descriptionField: String! = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,18 +48,40 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
         self.descriptionTextView.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(addTapped))
         self.view.addGestureRecognizer(tap)
+        
+        if titleField != nil {
+            titleTextField.text = titleField
+        }
+        if descriptionField != nil{
+            descriptionTextView.text = descriptionField
+        }
+        
     }
     
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
+    @objc func addTapped(){
+           performSegue(withIdentifier: "back2", sender: self)
+       }
+    
+    
     @IBAction func createListing(_ sender: UIButton) {
+        if titleTextField.text == "" ||  descriptionTextView.text == ""{
+            error.text = "Please fill out all fields"
+                      }
+
+    else{
+                      
         let loaderView: LoaderView = LoaderView(title: "Loading...", onView: self.dimmingView)
         self.view.addSubview(loaderView)
         loaderView.load()
-        StudentListingObject.createListing(title: self.titleTextField.text!, street: self.street, city: self.city, state: self.state, zip: self.zip, listingDescription: self.descriptionTextView.text!, numBed: self.numBed, numBath: self.numBath, startDate: self.startDate, endDate: self.endDate, rentPerMonth: self.rentPerMonth, fees: self.fees, numTenants: self.numTenants, failure: {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY-MM-dd"
+            StudentListingObject.createListing(title: self.titleTextField.text!, street: self.street, city: self.city, state: self.state, zip: self.zip, listingDescription: self.descriptionTextView.text!, numBed: self.numBed, numBath: self.numBath, startDate: self.startDate, endDate: self.endDate, rentPerMonth: self.rentPerMonth, fees: self.fees, numTenants: self.numTenants, failure: {
             DispatchQueue.main.async {
                 loaderView.stopLoading()
                 let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
@@ -68,6 +96,27 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
                 self.present(alert, animated: true, completion: nil)
             }
         })
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "back2" {
+
+        if let destination = segue.destination as? CreateListingSubleaseVC {
+         destination.titleField = self.titleTextField.text!
+         destination.descriptionField = self.descriptionTextView.text!
+         destination.street = self.street
+         destination.city = self.city
+         destination.state = self.state
+         destination.zip = self.zip
+         destination.numBed = self.numBed
+         destination.numBath = self.numBath
+         destination.numTenants = self.numTenants
+         destination.startDate = self.startDate
+         destination.endDate = self.endDate
+         destination.rentPerMonth = self.rentPerMonth
+         destination.fees = self.fees
+        }
+        }
     }
     
     @IBAction func addPhotos(_ sender: UIButton) {

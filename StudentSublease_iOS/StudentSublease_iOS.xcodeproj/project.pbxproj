@@ -33,6 +33,7 @@
 		94AB47302704DFC900C3C805 /* StudentSublease_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB472F2704DFC900C3C805 /* StudentSublease_iOSTests.swift */; };
 		94AB473B2704DFC900C3C805 /* StudentSublease_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB473A2704DFC900C3C805 /* StudentSublease_iOSUITests.swift */; };
 		AD5DEF1FDF40D9B8601BF63C /* Pods_StudentSublease_iOS_StudentSublease_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DEF7458906F6BFDBB0D272 /* Pods_StudentSublease_iOS_StudentSublease_iOSUITests.framework */; };
+		CEB4199E2731A0C000BFA981 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB4199D2731A0C000BFA981 /* back.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		94AB473C2704DFC900C3C805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AF9AD64A4C0AC36AA0A8FBF /* Pods_StudentSublease_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudentSublease_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9AEDA6B9BC3A95F619CCED3 /* Pods-StudentSublease_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentSublease_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-StudentSublease_iOSTests/Pods-StudentSublease_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CEB4199D2731A0C000BFA981 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = "../../../../../../../Downloads/PyQt5-5.15.4/examples/quick/shared/images/back.png"; sourceTree = "<group>"; };
 		F2DEF7458906F6BFDBB0D272 /* Pods_StudentSublease_iOS_StudentSublease_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudentSublease_iOS_StudentSublease_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47BFF416126EA62114CE40A /* Pods-StudentSublease_iOS-StudentSublease_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentSublease_iOS-StudentSublease_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudentSublease_iOS-StudentSublease_iOSUITests/Pods-StudentSublease_iOS-StudentSublease_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				24FE1B5A270636B0001F2675 /* TheMark.jpg */,
+				CEB4199D2731A0C000BFA981 /* back.png */,
 				24FE1B5B270636B0001F2675 /* SQ5.jpg */,
 				24FE1B5C270636B0001F2675 /* TheStandard.jpg */,
 				24FE1B5D270636B0001F2675 /* UH.jpg */,
@@ -397,6 +400,7 @@
 				24FE1B5E270636B0001F2675 /* TheMark.jpg in Resources */,
 				24FE1B4B2705772D001F2675 /* Main.storyboard in Resources */,
 				24FE1B60270636B0001F2675 /* TheStandard.jpg in Resources */,
+				CEB4199E2731A0C000BFA981 /* back.png in Resources */,
 				24FE1B61270636B0001F2675 /* UH.jpg in Resources */,
 				24FE1B5F270636B0001F2675 /* SQ5.jpg in Resources */,
 			);
@@ -646,7 +650,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -701,7 +705,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -717,7 +721,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LPT742FAHB;
+				DEVELOPMENT_TEAM = 7ATTTQ4L5A;
 				INFOPLIST_FILE = StudentSublease_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -736,7 +740,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LPT742FAHB;
+				DEVELOPMENT_TEAM = 7ATTTQ4L5A;
 				INFOPLIST_FILE = StudentSublease_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
