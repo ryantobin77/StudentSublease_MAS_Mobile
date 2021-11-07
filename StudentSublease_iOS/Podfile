@@ -8,6 +8,7 @@ target 'StudentSublease_iOS' do
   # Pods for StudentSublease_iOS
 pod 'MessageKit'
 pod 'DLRadioButton', '~> 1.4'
+pod 'DropDown'
 
   target 'StudentSublease_iOSTests' do
     inherit! :search_paths
