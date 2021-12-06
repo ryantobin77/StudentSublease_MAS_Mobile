@@ -1,0 +1,30 @@
+PODS:
+  - DLRadioButton (1.4.12)
+  - DropDown (2.3.13)
+  - InputBarAccessoryView (5.4.0):
+    - InputBarAccessoryView/Core (= 5.4.0)
+  - InputBarAccessoryView/Core (5.4.0)
+  - MessageKit (3.7.0):
+    - InputBarAccessoryView (~> 5.4.0)
+
+DEPENDENCIES:
+  - DLRadioButton (~> 1.4)
+  - DropDown
+  - MessageKit
+
+SPEC REPOS:
+  trunk:
+    - DLRadioButton
+    - DropDown
+    - InputBarAccessoryView
+    - MessageKit
+
+SPEC CHECKSUMS:
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
+  MessageKit: 8e76dd8d65ad44b49e1651c673497146416461e9
+
+PODFILE CHECKSUM: 2f1a37471d361a60fbbdfcc3c40cb800b7404519
+
+COCOAPODS: 1.11.1

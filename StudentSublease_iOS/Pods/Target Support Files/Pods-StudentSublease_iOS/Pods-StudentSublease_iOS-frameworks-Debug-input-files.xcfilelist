@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-StudentSublease_iOS/Pods-StudentSublease_iOS-frameworks.sh
+${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework
+${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework
+${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework
