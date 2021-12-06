@@ -1,0 +1,34 @@
+PODS:
+  - DLRadioButton (1.4.12)
+  - DropDown (2.3.13)
+  - InputBarAccessoryView (5.4.0):
+    - InputBarAccessoryView/Core (= 5.4.0)
+  - InputBarAccessoryView/Core (5.4.0)
+  - MessageKit (3.7.0):
+    - InputBarAccessoryView (~> 5.4.0)
+  - Starscream (4.0.4)
+
+DEPENDENCIES:
+  - DLRadioButton (~> 1.4)
+  - DropDown
+  - MessageKit
+  - Starscream (~> 4.0.0)
+
+SPEC REPOS:
+  trunk:
+    - DLRadioButton
+    - DropDown
+    - InputBarAccessoryView
+    - MessageKit
+    - Starscream
+
+SPEC CHECKSUMS:
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
+  MessageKit: 8e76dd8d65ad44b49e1651c673497146416461e9
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+
+PODFILE CHECKSUM: 53ce55117ef808e58dc9e313aabdf8e87e60db96
+
+COCOAPODS: 1.9.1
