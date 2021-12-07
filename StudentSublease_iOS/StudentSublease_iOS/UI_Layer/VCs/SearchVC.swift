@@ -321,6 +321,15 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         searchResultsTableView.reloadData()
     }
     
+    @IBAction func logout(_ sender: Any) {
+        var params = [String: Any]()
+        WebCallTasker().makePostRequest(forURL: BackendURL.LOGOUT, withParams: params, failure: {}, success: {(data, response) in if (response.statusCode == 201){DispatchQueue.main.async {
+            let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav1")
+            
+            self.view.window?.rootViewController = navigationController
+            self.view.window?.makeKeyAndVisible()
+        }}})
+    }
     
     @IBAction func sortByStartDate(_ sender: Any) {
         

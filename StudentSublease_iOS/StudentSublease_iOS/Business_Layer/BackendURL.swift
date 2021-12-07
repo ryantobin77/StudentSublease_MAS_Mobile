@@ -16,4 +16,9 @@ class BackendURL: NSObject {
     static let SEARCH_LISTINGS_PATH = SUBLEASE_PATH + "/search"
     static let CREATE_LISTING_PATH = SUBLEASE_PATH + "/listing/create"
     
+    // User Endpoints
+    static let USER_PATH = API_PATH + "/users"
+    static let SIGN_UP = USER_PATH + "/signup"
+    static let LOGIN = USER_PATH + "/login"
+    static let LOGOUT = USER_PATH + "/logout"
 }
