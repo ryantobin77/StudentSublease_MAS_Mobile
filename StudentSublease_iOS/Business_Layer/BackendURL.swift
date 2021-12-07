@@ -26,4 +26,9 @@ class BackendURL: NSObject {
     static let GET_CONVERSATIONS_PATH = MESSAGING_PATH + "/conversations"
     static let GET_MESSAGES_PATH = MESSAGING_PATH + "/messages"
     static let MESSAGING_WEB_SOCKET_PATH = WS_PROTOCOL + HOST + "/ws/messages/"
+    
+    static let USER_PATH = API_PATH + "/users"
+    static let SIGN_UP = USER_PATH + "/signup"
+    static let LOGIN = USER_PATH + "/login"
+    static let LOGOUT = USER_PATH + "/logout"
 }
