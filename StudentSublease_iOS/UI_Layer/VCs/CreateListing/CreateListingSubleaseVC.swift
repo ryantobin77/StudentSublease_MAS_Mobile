@@ -28,6 +28,7 @@ class CreateListingSubleaseVC: UIViewController {
     var numBed: Int?
     var numBath: Double?
     var numTenants: Int?
+    var amenities: Array<String>?
     
     var startDate: String?
     var endDate: String?
@@ -116,6 +117,7 @@ class CreateListingSubleaseVC: UIViewController {
             destination.titleField = self.titleField
             destination.descriptionField = self.descriptionField
             destination.location = self.location
+            destination.amenities = self.amenities
         }
     }
     
@@ -146,6 +148,7 @@ class CreateListingSubleaseVC: UIViewController {
                 destination.titleField = self.titleField
                 destination.descriptionField = self.descriptionField
                 destination.location = self.location
+                destination.amenities = self.amenities
             }
         }
         

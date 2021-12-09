@@ -1652,11 +1652,21 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Fyo-21-zgi"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="acHeatingButton" destination="EXd-ah-cYf" id="I4v-EU-YNg"/>
+                        <outlet property="dishwasherButton" destination="wgM-WO-hQA" id="uhJ-gt-ahW"/>
                         <outlet property="error" destination="mbm-PP-25W" id="PQV-6O-cvZ"/>
+                        <outlet property="furnishedButton" destination="k9S-sh-ES6" id="U35-a8-QVH"/>
+                        <outlet property="gymButton" destination="AFN-Kc-ZTB" id="Hf8-Pj-rLe"/>
+                        <outlet property="kitchenButton" destination="C7s-99-Qcc" id="EQE-qx-3Vi"/>
                         <outlet property="nextButton" destination="vUY-Rq-k3c" id="G1k-DT-UvU"/>
                         <outlet property="numBathsTextField" destination="4e2-hc-UXD" id="Nut-rU-85e"/>
                         <outlet property="numBedsTextField" destination="9MF-if-adb" id="48j-yr-WbS"/>
                         <outlet property="numTenantsTextField" destination="laO-od-W16" id="zfA-zi-bah"/>
+                        <outlet property="parkingButton" destination="SZS-e5-ezG" id="XyT-Ls-79J"/>
+                        <outlet property="petButton" destination="SxI-7E-zo5" id="zAa-BI-DYR"/>
+                        <outlet property="poolButton" destination="WZ9-IW-9nL" id="Fgj-rF-GOc"/>
+                        <outlet property="tvButton" destination="71Z-y4-qdP" id="6DG-9F-pb0"/>
+                        <outlet property="washerDryerButton" destination="3Kx-yd-MPU" id="rWo-ZD-PCX"/>
                         <segue destination="qzs-Jz-fTH" kind="show" identifier="createSublease" id="YQE-AU-16r"/>
                     </connections>
                 </viewController>

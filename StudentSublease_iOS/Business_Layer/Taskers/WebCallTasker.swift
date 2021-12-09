@@ -48,11 +48,7 @@ class WebCallTasker: NSObject {
         for i in image{
             myArr.append(i.jpegData(compressionQuality: 100)!)
         }
-        
         self.makeUrlRequest2(image: myArr, param: withParams, urlString: forURL, httpMethod: "POST", httpBody: urlParams, failure: failure, success: success)
-        
-        
-      
        }
     
     //Get Requests
@@ -66,7 +62,6 @@ class WebCallTasker: NSObject {
         let urlParams = params.compactMap({ (key, value) -> String in
             return "\(key)=\(value)"
         }).joined(separator: "&")
-        print("URL PARAMS::::: " , urlParams)
         return urlParams
     }
     

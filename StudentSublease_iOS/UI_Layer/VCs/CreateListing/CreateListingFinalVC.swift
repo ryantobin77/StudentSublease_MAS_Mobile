@@ -32,6 +32,7 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
     var numBed: Int?
     var numBath: Double?
     var numTenants: Int?
+    var amenities: Array<String>?
     
     var startDate: String?
     var endDate: String?
@@ -112,6 +113,7 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
             destination.titleField = self.titleField
             destination.descriptionField = self.descriptionField
             destination.location = self.location
+            destination.amenities = self.amenities
         }
     }
     
@@ -129,7 +131,7 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
             loaderView.load()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd"
-            StudentListingObject.createListing(user: self.currentUser, title: self.titleTextField.text!, street: self.street!, city: self.city!, state: self.state!, zip: self.zip!, location: self.location!, listingDescription: self.descriptionTextView.text!, numBed: self.numBed!, numBath: self.numBath!, startDate: self.startDate!, endDate: self.endDate!, rentPerMonth: self.rentPerMonth!, fees: self.fees!, numTenants: self.numTenants!, images: PhotoArray, failure: {
+            StudentListingObject.createListing(user: self.currentUser, title: self.titleTextField.text!, street: self.street!, city: self.city!, state: self.state!, zip: self.zip!, location: self.location!, listingDescription: self.descriptionTextView.text!, numBed: self.numBed!, numBath: self.numBath!, startDate: self.startDate!, endDate: self.endDate!, rentPerMonth: self.rentPerMonth!, fees: self.fees!, numTenants: self.numTenants!, images: PhotoArray, amenities: self.amenities!, failure: {
                 DispatchQueue.main.async {
                     loaderView.stopLoading()
                     let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)

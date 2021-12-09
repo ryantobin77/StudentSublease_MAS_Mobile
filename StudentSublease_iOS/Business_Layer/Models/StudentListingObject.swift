@@ -64,9 +64,9 @@ class StudentListingObject: NSObject {
         return self.convertStringToDate(dateStr: self.listedDate)
     }
     
-    class func createListing(user: SubleaseUserObject, title: String, street: String, city: String, state: String, zip: String, location: CLLocation, listingDescription: String, numBed: Int, numBath: Double, startDate: String, endDate: String, rentPerMonth: Int, fees: Int, numTenants: Int,  images: Array<UIImage>, failure: @escaping () -> Void, success: @escaping (_ listing: StudentListingObject?) -> Void) {
+    class func createListing(user: SubleaseUserObject, title: String, street: String, city: String, state: String, zip: String, location: CLLocation, listingDescription: String, numBed: Int, numBath: Double, startDate: String, endDate: String, rentPerMonth: Int, fees: Int, numTenants: Int,  images: Array<UIImage>, amenities: Array<String>, failure: @escaping () -> Void, success: @escaping (_ listing: StudentListingObject?) -> Void) {
         let webCallTakser: WebCallTasker = WebCallTasker()
-        var params = [String: Any]()
+        var params = self.generateAmenityParams(amenities: amenities)
         params["title"] = title
         params["street"] = street
         params["city"] = city
@@ -95,6 +95,17 @@ class StudentListingObject: NSObject {
             let listing = StudentListingObject.parseJson(jsonData: data)
             success(listing)
         })
+    }
+    
+    private class func generateAmenityParams(amenities: Array<String>) -> [String: Any] {
+        var params = [String: Any]()
+        var count = 1
+        for amenity in amenities {
+            let key = "amenity_" + String(count)
+            params[key] = amenity
+            count += 1
+        }
+        return params
     }
     
     class func searchListings(failure: @escaping () -> Void, success: @escaping (_ listings: Array<StudentListingObject>?) -> Void) {

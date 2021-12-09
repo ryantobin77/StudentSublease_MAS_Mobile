@@ -15,6 +15,21 @@ class CreateListingPropertyVC: UIViewController {
     @IBOutlet var numBathsTextField: UITextField!
     @IBOutlet var numTenantsTextField: UITextField!
     @IBOutlet var nextButton: UIButton!
+
+    // Amenities
+    @IBOutlet var acHeatingButton: UIButton!
+    @IBOutlet var washerDryerButton: UIButton!
+    @IBOutlet var kitchenButton: UIButton!
+    @IBOutlet var tvButton: UIButton!
+    @IBOutlet var dishwasherButton: UIButton!
+    @IBOutlet var furnishedButton: UIButton!
+    @IBOutlet var parkingButton: UIButton!
+    @IBOutlet var gymButton: UIButton!
+    @IBOutlet var poolButton: UIButton!
+    @IBOutlet var petButton: UIButton!
+    var amenityButtonDict: [UIButton: String]!
+    var amenityStringDict: [String: UIButton]!
+
     
     var strPass: [String] = []
     var phto: [UIImage] = []
@@ -27,6 +42,7 @@ class CreateListingPropertyVC: UIViewController {
     var numBed: Int?
     var numBath: Double?
     var numTenants: Int?
+    var amenities: Array<String>?
     
     var startDate: String?
     var endDate: String?
@@ -43,6 +59,12 @@ class CreateListingPropertyVC: UIViewController {
         self.nextButton.layer.cornerRadius = 8.0
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        self.setupAmenities()
+        if let amens = self.amenities {
+            for a in amens {
+                self.amenityStringDict[a]?.setImage(UIImage(systemName: "circle.fill")!, for: .normal)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +79,34 @@ class CreateListingPropertyVC: UIViewController {
         if let tenants = self.numTenants {
             self.numTenantsTextField.text = String(tenants)
         }
+        
+    }
+    
+    func setupAmenities() {
+        self.amenityButtonDict = [UIButton: String]()
+        self.amenityButtonDict[self.acHeatingButton] = "A/C & Heating"
+        self.amenityButtonDict[self.washerDryerButton] = "Washer & Dryer"
+        self.amenityButtonDict[self.kitchenButton] = "Kitchen"
+        self.amenityButtonDict[self.tvButton] = "TV"
+        self.amenityButtonDict[self.dishwasherButton] = "Dishwasher"
+        self.amenityButtonDict[self.furnishedButton] = "Furnished"
+        self.amenityButtonDict[self.parkingButton] = "Parking Available"
+        self.amenityButtonDict[self.gymButton] = "Gym"
+        self.amenityButtonDict[self.poolButton] = "Pool"
+        self.amenityButtonDict[self.petButton] = "Pet Friendly"
+        
+        self.amenityStringDict = [String: UIButton]()
+        self.amenityStringDict["A/C & Heating"] = self.acHeatingButton
+        self.amenityStringDict["Washer & Dryer"] = self.washerDryerButton
+        self.amenityStringDict["Kitchen"] = self.kitchenButton
+        self.amenityStringDict["TV"] = self.tvButton
+        self.amenityStringDict["Dishwasher"] = self.dishwasherButton
+        self.amenityStringDict["Furnished"] = self.furnishedButton
+        self.amenityStringDict["Parking Available"] = self.parkingButton
+        self.amenityStringDict["Gym"] = self.gymButton
+        self.amenityStringDict["Pool"] = self.poolButton
+        self.amenityStringDict["Pet Friendly"] = self.petButton
+        
     }
    
     @objc func dismissKeyboard() {
@@ -76,6 +126,12 @@ class CreateListingPropertyVC: UIViewController {
         } else if (numTenantsTextField.text?.contains("."))! {
             error.text = "Please enter an appropriate number of tenants"
         } else{
+            self.amenities = Array<String>()
+            for (button, amenity) in self.amenityButtonDict {
+                if button.currentBackgroundImage == UIImage(systemName: "circle.fill") {
+                    self.amenities?.append(amenity)
+                }
+            }
             self.performSegue(withIdentifier: "createSublease", sender: self)
         }
     }
@@ -119,6 +175,7 @@ class CreateListingPropertyVC: UIViewController {
             destination.titleField = self.titleField
             destination.descriptionField = self.descriptionField
             destination.location = self.location
+            destination.amenities = self.amenities
         }
     }
     
@@ -146,6 +203,7 @@ class CreateListingPropertyVC: UIViewController {
                 destination.titleField = self.titleField
                 destination.descriptionField = self.descriptionField
                 destination.location = self.location
+                destination.amenities = self.amenities
                 
             }
         }
