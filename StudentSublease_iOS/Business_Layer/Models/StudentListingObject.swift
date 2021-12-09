@@ -121,10 +121,7 @@ class StudentListingObject: NSObject {
             }
             var result: Array<StudentListingObject> = Array<StudentListingObject>()
             for listing in listings {
-                guard let listingData = try? JSONSerialization.data(withJSONObject: listing, options: []) else {
-                    continue
-                }
-                if let parsedListing = StudentListingObject.parseJson(jsonData: listingData) {
+                if let parsedListing = StudentListingObject.parseJson(listing_json: listing) {
                     result.append(parsedListing)
                 }
             }
@@ -148,10 +145,7 @@ class StudentListingObject: NSObject {
             }
             var result: Array<StudentListingObject> = Array<StudentListingObject>()
             for listing in listings {
-                guard let listingData = try? JSONSerialization.data(withJSONObject: listing, options: []) else {
-                    continue
-                }
-                if let parsedListing = StudentListingObject.parseJson(jsonData: listingData) {
+                if let parsedListing = StudentListingObject.parseJson(listing_json: listing) {
                     result.append(parsedListing)
                 }
             }
@@ -191,7 +185,26 @@ class StudentListingObject: NSObject {
         let rentPerMonth = listing_json["rent_per_month"] as! Int
         let numTenants = listing_json["num_tenants"] as! Int
         let fees = listing_json["fees"] as! Int
-        let images = [UIImage(named: "TheMark.jpg")!]
+        var images = Array<UIImage>()
+        if let images_json = listing_json["images"] as? Array<String> {
+            for imageUrl in images_json {
+                let fullPath = BackendURL.BASE_PATH + imageUrl
+                guard let url = URL(string: fullPath) else {
+                    continue
+                }
+                guard let data = try? Data.init(contentsOf: url) else {
+                    continue
+                }
+                guard let image = UIImage(data: data) else {
+                    continue
+                }
+                images.append(image)
+            }
+        }
+        if images.count == 0 {
+            let image = UIImage(systemName: "building.2.fill")!.withTintColor(.darkGray, renderingMode: .alwaysOriginal)
+            images.append(image)
+        }
         var distance: Double = 0.0
         if let distance_json = listing_json["distance"] {
             distance = distance_json as! Double

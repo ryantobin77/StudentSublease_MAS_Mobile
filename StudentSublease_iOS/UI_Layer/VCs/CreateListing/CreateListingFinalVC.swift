@@ -57,6 +57,8 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
         self.descriptionTextView.layer.cornerRadius = 8.0
         self.descriptionTextView.delegate = self
         
+        self.photosImageView.layer.cornerRadius = 8.0
+        
         self.navigationController?.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))

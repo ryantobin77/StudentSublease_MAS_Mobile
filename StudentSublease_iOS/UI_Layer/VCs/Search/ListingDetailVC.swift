@@ -34,7 +34,9 @@ class ListingDetailVC: UIViewController {
         self.dimmingView.alpha = 0.0
         self.view.addSubview(self.dimmingView)
         
-        self.listingImageView.image = self.studentListing.images[0]
+        self.listingImageView.animationImages = self.studentListing.images
+        self.listingImageView.animationDuration = 3.0
+        self.listingImageView.startAnimating()
         self.addressLabel.text = self.studentListing.address
         self.bedBathLabel.text = String(studentListing.numBed) + " bed • " + String(self.studentListing.numBath) + " bath • " + String(self.studentListing.numTenants) + " spots available"
         self.costLabel.text = "$" + String(self.studentListing.rentPerMonth) + " • $" + String(self.studentListing.fees) + " in fees"
