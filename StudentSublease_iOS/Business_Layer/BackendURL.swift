@@ -20,6 +20,7 @@ class BackendURL: NSObject {
     static let SEARCH_LISTINGS_PATH = SUBLEASE_PATH + "/search"
     static let CREATE_LISTING_PATH = SUBLEASE_PATH + "/listing/create"
     static let DELETE_LISTING_PATH = SUBLEASE_PATH + "/listing/delete"
+    static let MY_LISTINGS_PATH = SUBLEASE_PATH + "/mylistings"
     
     // Messaging Endpoints
     static let MESSAGING_PATH = API_PATH + "/messaging"

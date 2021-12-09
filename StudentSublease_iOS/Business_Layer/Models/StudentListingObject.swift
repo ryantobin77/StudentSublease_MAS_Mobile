@@ -132,8 +132,36 @@ class StudentListingObject: NSObject {
         })
     }
     
-    class func delteListing(listing: StudentListingObject, failure: @escaping () -> Void, success: @escaping () -> Void) {
+    class func getMyListings(lister: SubleaseUserObject, failure: @escaping () -> Void, success: @escaping (_ listings: Array<StudentListingObject>?) -> Void) {
         var params: [String: Any] = [String: Any]()
+        params["lister_pk"] = lister.pk
+        WebCallTasker().makePostRequest(forURL: BackendURL.MY_LISTINGS_PATH, withParams: params, failure: {
+            failure()
+        }, success: {(data, response) in
+            if response.statusCode != 200 {
+                failure()
+                return
+            }
+            guard let listings = try? JSONSerialization.jsonObject(with: data) as? Array<[String: Any]> else {
+                failure()
+                return
+            }
+            var result: Array<StudentListingObject> = Array<StudentListingObject>()
+            for listing in listings {
+                guard let listingData = try? JSONSerialization.data(withJSONObject: listing, options: []) else {
+                    continue
+                }
+                if let parsedListing = StudentListingObject.parseJson(jsonData: listingData) {
+                    result.append(parsedListing)
+                }
+            }
+            success(result)
+        })
+    }
+    
+    class func delteListing(lister: SubleaseUserObject, listing: StudentListingObject, failure: @escaping () -> Void, success: @escaping () -> Void) {
+        var params: [String: Any] = [String: Any]()
+        params["lister_pk"] = lister.pk
         params["listing_pk"] = listing.pk
         WebCallTasker().makePostRequest(forURL: BackendURL.DELETE_LISTING_PATH, withParams: params, failure: {
             failure()

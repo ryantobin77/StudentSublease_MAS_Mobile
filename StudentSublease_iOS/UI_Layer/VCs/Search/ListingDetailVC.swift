@@ -68,7 +68,7 @@ class ListingDetailVC: UIViewController {
         let loaderView: LoaderView = LoaderView(title: "Loading...", onView: self.dimmingView)
         self.view.addSubview(loaderView)
         loaderView.load()
-        StudentListingObject.delteListing(listing: self.studentListing, failure: {
+        StudentListingObject.delteListing(lister: self.currentUser, listing: self.studentListing, failure: {
             DispatchQueue.main.async {
                 loaderView.stopLoading()
                 let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
