@@ -18,7 +18,7 @@ class MyAccountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.currentUser = SubleaseUserObject(pk: 2, email: "ryantobin77@gatech.edu", firstName: "Ryan", lastName: "Tobin", college: "Georgia Institute of Technology")
+        self.currentUser = SubleaseUserObject.getUser(key: "currentUser")!
         self.nameLabel.text = currentUser.firstName + " " + self.currentUser.lastName
         self.collegeLabel.text = currentUser.college
         self.emailLabel.text = currentUser.email
@@ -27,7 +27,17 @@ class MyAccountVC: UIViewController {
     }
     
     @IBAction func logoutPressed(_ sender: UIButton) {
-        print("Logout pressed")
+        self.currentUser.logout(failure: {
+            let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }, success: {
+            DispatchQueue.main.async {
+                let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav1")
+                self.view.window?.rootViewController = navigationController
+                self.view.window?.makeKeyAndVisible()
+            }
+        })
     }
 
 }

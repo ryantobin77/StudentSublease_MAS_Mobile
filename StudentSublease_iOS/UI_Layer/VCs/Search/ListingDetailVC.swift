@@ -19,12 +19,20 @@ class ListingDetailVC: UIViewController {
     @IBOutlet var amenitiesLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
     var studentListing: StudentListingObject!
+    var currentUser: SubleaseUserObject!
+    var dimmingView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = self.studentListing.title
+        self.currentUser = SubleaseUserObject.getUser(key: "currentUser")!
         self.messageListerButton.layer.cornerRadius = 6.0
         self.listingImageView.layer.cornerRadius = 8.0
+        
+        self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        self.dimmingView.backgroundColor = .black
+        self.dimmingView.alpha = 0.0
+        self.view.addSubview(self.dimmingView)
         
         self.listingImageView.image = self.studentListing.images[0]
         self.addressLabel.text = self.studentListing.address
@@ -34,10 +42,53 @@ class ListingDetailVC: UIViewController {
         self.descriptionLabel.text = self.studentListing.listingDescription
         let amenityText = (self.studentListing.amenities.map{String($0)}).joined(separator: ", ")
         self.amenitiesLabel.text = amenityText
+        if self.currentUser.pk == self.studentListing.lister.pk {
+            self.messageListerButton.setTitle("Delete Listing", for: .normal)
+            self.messageListerButton.addTarget(self, action: #selector(deleteListingClicked(_:)), for: .touchUpInside)
+        } else {
+            self.messageListerButton.setTitle("Message Lister", for: .normal)
+            self.messageListerButton.addTarget(self, action: #selector(messageUser(_:)), for: .touchUpInside)
+        }
     }
     
-    @IBAction func messageUser(_ sender: UIButton) {
+    @objc func messageUser(_ sender: UIButton) {
         self.performSegue(withIdentifier: "startConversation", sender: self)
+    }
+    
+    @objc func deleteListingClicked(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Delete Listing", message: "Are you sure you would like to delte this listing?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes, delete", style: .destructive, handler: {(action) in
+            self.deleteListing()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteListing() {
+        let loaderView: LoaderView = LoaderView(title: "Loading...", onView: self.dimmingView)
+        self.view.addSubview(loaderView)
+        loaderView.load()
+        StudentListingObject.delteListing(listing: self.studentListing, failure: {
+            DispatchQueue.main.async {
+                loaderView.stopLoading()
+                let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }, success: {
+            DispatchQueue.main.async {
+                loaderView.stopLoading()
+                let alert = UIAlertController(title: "Success", message: "Your sublease has been deleted!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {(action) in
+                    DispatchQueue.main.async {
+                        let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav2")
+                        self.view.window?.rootViewController = navigationController
+                        self.view.window?.makeKeyAndVisible()
+                    }
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     override func viewDidLayoutSubviews() {

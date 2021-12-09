@@ -21,6 +21,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     @IBOutlet var searchResultsTableView: UITableView!
     let searchCellID = "searchCell"
     var menuButtonVisible = false
+    var currentUser: SubleaseUserObject!
     
     var searchResults: Array<StudentListingObject>!
     var unfilteredResults: Array<StudentListingObject>!
@@ -206,6 +207,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.currentUser = SubleaseUserObject.getUser(key: "currentUser")!
         self.searchResults = Array<StudentListingObject>()
         self.unfilteredResults = self.searchResults
         
@@ -451,13 +453,17 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     }
     
     @IBAction func log_out(_ sender: Any) {
-        var params = [String: Any]()
-        WebCallTasker().makePostRequest(forURL: BackendURL.LOGOUT, withParams: params, failure: {}, success: {(data, response) in if (response.statusCode == 201){DispatchQueue.main.async {
-            let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav1")
-            
-            self.view.window?.rootViewController = navigationController
-            self.view.window?.makeKeyAndVisible()
-        }}})
+        self.currentUser.logout(failure: {
+            let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }, success: {
+            DispatchQueue.main.async {
+                let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav1")
+                self.view.window?.rootViewController = navigationController
+                self.view.window?.makeKeyAndVisible()
+            }
+        })
     }
     
 }

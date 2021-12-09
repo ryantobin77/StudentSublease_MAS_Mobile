@@ -19,6 +19,7 @@ class BackendURL: NSObject {
     static let SUBLEASE_PATH = API_PATH + "/sublease"
     static let SEARCH_LISTINGS_PATH = SUBLEASE_PATH + "/search"
     static let CREATE_LISTING_PATH = SUBLEASE_PATH + "/listing/create"
+    static let DELETE_LISTING_PATH = SUBLEASE_PATH + "/listing/delete"
     
     // Messaging Endpoints
     static let MESSAGING_PATH = API_PATH + "/messaging"
@@ -27,6 +28,7 @@ class BackendURL: NSObject {
     static let GET_MESSAGES_PATH = MESSAGING_PATH + "/messages"
     static let MESSAGING_WEB_SOCKET_PATH = WS_PROTOCOL + HOST + "/ws/messages/"
     
+    // User Endpoints
     static let USER_PATH = API_PATH + "/users"
     static let SIGN_UP = USER_PATH + "/signup"
     static let LOGIN = USER_PATH + "/login"

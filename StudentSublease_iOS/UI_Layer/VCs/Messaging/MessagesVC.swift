@@ -31,7 +31,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         self.tableView.rowHeight = UITableView.automaticDimension
         
         self.messagingTasker = MessagingTasker()
-        self.currentUser = SubleaseUserObject(pk: 2, email: "ryantobin77@gatech.edu", firstName: "Ryan", lastName: "Tobin", college: "Georgia Institute of Technology") // Fix hardcode
+        self.currentUser = SubleaseUserObject.getUser(key: "currentUser")!
         self.conversations = Array<ConversationObject>()
         self.conversationMap = [Int : ConversationObject]()
         self.websockets = [WebSocket]()

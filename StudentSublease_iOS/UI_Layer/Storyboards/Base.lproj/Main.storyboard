@@ -977,9 +977,6 @@
                                         <state key="normal" title="Message Lister">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="messageUser:" destination="ViV-fs-N3g" eventType="touchUpInside" id="UDH-DY-Z7V"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amenities" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gB-EG-CM7">
                                         <rect key="frame" x="25" y="577" width="364" height="20.5"/>
@@ -1798,7 +1795,7 @@
                                 <rect key="frame" x="-81" y="-222" width="641" height="1366"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginbackground (1).jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="MTZ-dZ-qkX">
-                                        <rect key="frame" x="0.0" y="0.0" width="634" height="1216"/>
+                                        <rect key="frame" x="0.0" y="-50" width="634" height="1216"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="634" id="WYb-S3-uFF"/>
                                             <constraint firstAttribute="height" constant="1216" id="b4D-aQ-OU7"/>
@@ -1874,7 +1871,7 @@
             </objects>
             <point key="canvasLocation" x="-4975" y="-63"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign Up-->
         <scene sceneID="R2Y-AG-2iA">
             <objects>
                 <viewController id="2iZ-2o-PwE" customClass="SignUpViewController" customModule="StudentSublease_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1945,7 +1942,7 @@
                             <constraint firstItem="udN-1K-Zkm" firstAttribute="leading" secondItem="elf-2u-HNE" secondAttribute="leading" constant="40" id="fhq-ov-bXW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Qxv-Pi-Omw"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="Qxv-Pi-Omw"/>
                     <connections>
                         <outlet property="collegeTextField" destination="gbQ-6d-5oz" id="0Jy-Ae-Ofk"/>
                         <outlet property="emailTextField" destination="Mjs-F4-uMt" id="Afd-gv-MNw"/>
@@ -1960,7 +1957,7 @@
             </objects>
             <point key="canvasLocation" x="-4012" y="-465"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Login-->
         <scene sceneID="c6R-jg-ZWc">
             <objects>
                 <viewController id="G3T-1i-WgG" customClass="LoginViewController" customModule="StudentSublease_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -2013,7 +2010,7 @@
                             <constraint firstItem="cZM-Hb-rBL" firstAttribute="top" secondItem="oE3-ab-w1b" secondAttribute="top" constant="40" id="xgs-ta-y7r"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dTO-Zc-Umg"/>
+                    <navigationItem key="navigationItem" title="Login" id="dTO-Zc-Umg"/>
                     <connections>
                         <outlet property="emailTextField" destination="Ooc-u6-CV4" id="sAa-9y-bTL"/>
                         <outlet property="errorLabel" destination="gkt-W7-XxG" id="Idf-cu-IBQ"/>

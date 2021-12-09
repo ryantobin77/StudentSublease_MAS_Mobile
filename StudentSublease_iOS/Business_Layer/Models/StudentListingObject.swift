@@ -64,7 +64,7 @@ class StudentListingObject: NSObject {
         return self.convertStringToDate(dateStr: self.listedDate)
     }
     
-    class func createListing(title: String, street: String, city: String, state: String, zip: String, location: CLLocation, listingDescription: String, numBed: Int, numBath: Double, startDate: String, endDate: String, rentPerMonth: Int, fees: Int, numTenants: Int,  images: Array<UIImage>, failure: @escaping () -> Void, success: @escaping (_ listing: StudentListingObject?) -> Void) {
+    class func createListing(user: SubleaseUserObject, title: String, street: String, city: String, state: String, zip: String, location: CLLocation, listingDescription: String, numBed: Int, numBath: Double, startDate: String, endDate: String, rentPerMonth: Int, fees: Int, numTenants: Int,  images: Array<UIImage>, failure: @escaping () -> Void, success: @escaping (_ listing: StudentListingObject?) -> Void) {
         let webCallTakser: WebCallTasker = WebCallTasker()
         var params = [String: Any]()
         params["title"] = title
@@ -74,11 +74,11 @@ class StudentListingObject: NSObject {
         params["zip"] = zip
         params["lat"] = Double(location.coordinate.latitude)
         params["long"] = Double(location.coordinate.longitude)
-        params["lister_pk"] = 1 // Fix hardcode
+        params["lister_pk"] = user.pk
         params["description"] = listingDescription
         params["num_bed"] = numBed
         params["num_bath"] = numBath
-        params["gender_preference"] = 0 // Fix hardcode
+        params["gender_preference"] = 0
         params["start_date"] = startDate
         params["end_date"] = endDate
         params["rent_per_month"] = rentPerMonth
@@ -129,6 +129,20 @@ class StudentListingObject: NSObject {
                 }
             }
             success(result)
+        })
+    }
+    
+    class func delteListing(listing: StudentListingObject, failure: @escaping () -> Void, success: @escaping () -> Void) {
+        var params: [String: Any] = [String: Any]()
+        params["listing_pk"] = listing.pk
+        WebCallTasker().makePostRequest(forURL: BackendURL.DELETE_LISTING_PATH, withParams: params, failure: {
+            failure()
+        }, success: {(data, response) in
+            if response.statusCode == 200 {
+                success()
+            } else {
+                failure()
+            }
         })
     }
     

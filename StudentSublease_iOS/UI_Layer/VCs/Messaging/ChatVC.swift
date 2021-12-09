@@ -20,8 +20,7 @@ class ChatVC: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Fix hardcode
-        self.currentUser = SubleaseUserObject(pk: 2, email: "ryantobin77@gatech.edu", firstName: "Ryan", lastName: "Tobin", college: "Georgia Institute of Technology")
+        self.currentUser = SubleaseUserObject.getUser(key: "currentUser")!
         self.sendingSender = Sender(senderId: String(self.currentUser.pk), displayName: self.currentUser.firstName + " " + self.currentUser.lastName, user: self.currentUser)
         self.receivingSender = Sender(senderId: String(self.listing.lister.pk), displayName: self.listing.lister.firstName + " " + self.listing.lister.lastName, user: self.listing.lister)
         

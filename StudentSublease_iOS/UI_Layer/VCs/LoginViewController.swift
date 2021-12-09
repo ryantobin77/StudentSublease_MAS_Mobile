@@ -35,36 +35,24 @@ class LoginViewController: UIViewController {
         Utilities.styleFilledButton(loginButton)
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
     
     @IBAction func loginTapped(_ sender: Any) {
         var params = [String: Any]()
         params["email"] = emailTextField.text
         params["password"] = passwordTextField.text
-    
-        WebCallTasker().makePostRequest(forURL: BackendURL.LOGIN, withParams: params, failure: {}, success: {(data, response) in if (response.statusCode != 201) {DispatchQueue.main.async {
-            self.errorLabel.alpha = 1
-        }} else {self.transitionToHome()}})
-        
+        SubleaseUserObject.loginUser(email: emailTextField.text!, password: passwordTextField.text!, failure: {
+            DispatchQueue.main.async {
+                self.errorLabel.alpha = 1
+            }
+        }, success: {(user) in
+            self.transitionToHome()
+        })
     }
     
     
     func transitionToHome() {
-        
         DispatchQueue.main.async {
             let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav2")
-            
             self.view.window?.rootViewController = navigationController
             self.view.window?.makeKeyAndVisible()
         }

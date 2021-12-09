@@ -18,6 +18,7 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var submitButton: UIButton!
     var dimmingView: UIView!
+    var currentUser: SubleaseUserObject!
     
     var street: String?
     var city: String?
@@ -44,6 +45,7 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.currentUser = SubleaseUserObject.getUser(key: "currentUser")!
         self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         self.dimmingView.backgroundColor = .black
         self.dimmingView.alpha = 0.0
@@ -125,21 +127,27 @@ class CreateListingFinalVC: UIViewController, UITextViewDelegate, UIImagePickerC
             loaderView.load()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd"
-            StudentListingObject.createListing(title: self.titleTextField.text!, street: self.street!, city: self.city!, state: self.state!, zip: self.zip!, location: self.location!, listingDescription: self.descriptionTextView.text!, numBed: self.numBed!, numBath: self.numBath!, startDate: self.startDate!, endDate: self.endDate!, rentPerMonth: self.rentPerMonth!, fees: self.fees!, numTenants: self.numTenants!, images: PhotoArray, failure: {
-            DispatchQueue.main.async {
-                loaderView.stopLoading()
-                let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }, success: {(listing) in
-            DispatchQueue.main.async {
-                loaderView.stopLoading()
-                let alert = UIAlertController(title: "Success", message: "Your sublease has been listed!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        })
+            StudentListingObject.createListing(user: self.currentUser, title: self.titleTextField.text!, street: self.street!, city: self.city!, state: self.state!, zip: self.zip!, location: self.location!, listingDescription: self.descriptionTextView.text!, numBed: self.numBed!, numBath: self.numBath!, startDate: self.startDate!, endDate: self.endDate!, rentPerMonth: self.rentPerMonth!, fees: self.fees!, numTenants: self.numTenants!, images: PhotoArray, failure: {
+                DispatchQueue.main.async {
+                    loaderView.stopLoading()
+                    let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }, success: {(listing) in
+                DispatchQueue.main.async {
+                    loaderView.stopLoading()
+                    let alert = UIAlertController(title: "Success", message: "Your sublease has been listed!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {(action) in
+                        DispatchQueue.main.async {
+                            let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav2")
+                            self.view.window?.rootViewController = navigationController
+                            self.view.window?.makeKeyAndVisible()
+                        }
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
         }
     }
     
