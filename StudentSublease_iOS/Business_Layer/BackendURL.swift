@@ -8,9 +8,10 @@
 import UIKit
 
 class BackendURL: NSObject {
-    static let HTTP_PROTOCOL = "http://"
-    static let WS_PROTOCOL = "ws://"
-    static let HOST = "127.0.0.1:8000"
+    static let HTTP_PROTOCOL = "https://"
+    static let WS_PROTOCOL = "wss://"
+    // static let HOST = "127.0.0.1:8000"
+    static let HOST = "studentsubleasemas.herokuapp.com"
     
     static let BASE_PATH = HTTP_PROTOCOL + HOST
     static let API_PATH = BASE_PATH + "/api"
