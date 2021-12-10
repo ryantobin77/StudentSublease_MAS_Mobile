@@ -26,14 +26,7 @@ class SignUpViewController: UIViewController {
     }
     
     func setUpElements() {
-        
         errorLabel.alpha = 0
-        
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(firstnameTextField)
-        Utilities.styleTextField(lastnameTextField)
-        Utilities.styleTextField(collegeTextField)
-        Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(signupButton)
         
     }

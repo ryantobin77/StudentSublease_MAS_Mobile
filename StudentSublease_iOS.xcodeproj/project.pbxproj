@@ -28,6 +28,13 @@
 		9434AA052724AEB200E51FD0 /* CreateListingPropertyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434AA042724AEB200E51FD0 /* CreateListingPropertyVC.swift */; };
 		9434AA072724AECE00E51FD0 /* CreateListingSubleaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434AA062724AECE00E51FD0 /* CreateListingSubleaseVC.swift */; };
 		9434AA092724AEDF00E51FD0 /* CreateListingFinalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434AA082724AEDF00E51FD0 /* CreateListingFinalVC.swift */; };
+		94414AFE276178AF001CBD13 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94414AFD276178AF001CBD13 /* Utilities.swift */; };
+		94414B00276178ED001CBD13 /* loginbackground (1).jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 94414AFF276178ED001CBD13 /* loginbackground (1).jpeg */; };
+		94414B022761791C001CBD13 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94414B012761791C001CBD13 /* HomeViewController.swift */; };
+		94414B0427617923001CBD13 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94414B0327617923001CBD13 /* LoginViewController.swift */; };
+		94414B0627617929001CBD13 /* MyAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94414B0527617929001CBD13 /* MyAccountVC.swift */; };
+		94414B082761792F001CBD13 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94414B072761792F001CBD13 /* SignUpViewController.swift */; };
+		94414B0A27629EBD001CBD13 /* MyListingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94414B0927629EBD001CBD13 /* MyListingsVC.swift */; };
 		9461EC62275C521800979845 /* StartConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9461EC61275C521800979845 /* StartConversationVC.swift */; };
 		9461EC64275C528500979845 /* MessagingStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9461EC63275C528500979845 /* MessagingStructs.swift */; };
 		9461EC66275C661C00979845 /* SubleaseUserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9461EC65275C661C00979845 /* SubleaseUserObject.swift */; };
@@ -86,6 +93,13 @@
 		9434AA042724AEB200E51FD0 /* CreateListingPropertyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingPropertyVC.swift; sourceTree = "<group>"; };
 		9434AA062724AECE00E51FD0 /* CreateListingSubleaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingSubleaseVC.swift; sourceTree = "<group>"; };
 		9434AA082724AEDF00E51FD0 /* CreateListingFinalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingFinalVC.swift; sourceTree = "<group>"; };
+		94414AFD276178AF001CBD13 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		94414AFF276178ED001CBD13 /* loginbackground (1).jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "loginbackground (1).jpeg"; sourceTree = "<group>"; };
+		94414B012761791C001CBD13 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		94414B0327617923001CBD13 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		94414B0527617929001CBD13 /* MyAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountVC.swift; sourceTree = "<group>"; };
+		94414B072761792F001CBD13 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		94414B0927629EBD001CBD13 /* MyListingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListingsVC.swift; sourceTree = "<group>"; };
 		9461EC61275C521800979845 /* StartConversationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConversationVC.swift; sourceTree = "<group>"; };
 		9461EC63275C528500979845 /* MessagingStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingStructs.swift; sourceTree = "<group>"; };
 		9461EC65275C661C00979845 /* SubleaseUserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubleaseUserObject.swift; sourceTree = "<group>"; };
@@ -162,6 +176,11 @@
 		24FE1B4E27062C57001F2675 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				94414B012761791C001CBD13 /* HomeViewController.swift */,
+				94414B0927629EBD001CBD13 /* MyListingsVC.swift */,
+				94414B0327617923001CBD13 /* LoginViewController.swift */,
+				94414B0527617929001CBD13 /* MyAccountVC.swift */,
+				94414B072761792F001CBD13 /* SignUpViewController.swift */,
 				9461EC6C275C97C000979845 /* Messaging */,
 				9434AA012724AE4E00E51FD0 /* CreateListing */,
 				9461EC6B275C97A700979845 /* Search */,
@@ -193,6 +212,7 @@
 		24FE1B59270636B0001F2675 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				94414AFF276178ED001CBD13 /* loginbackground (1).jpeg */,
 				24FE1B5A270636B0001F2675 /* TheMark.jpg */,
 				24FE1B5B270636B0001F2675 /* SQ5.jpg */,
 				24FE1B5C270636B0001F2675 /* TheStandard.jpg */,
@@ -278,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				94AB47182704DFC700C3C805 /* AppDelegate.swift */,
+				94414AFD276178AF001CBD13 /* Utilities.swift */,
 				94AB471A2704DFC700C3C805 /* SceneDelegate.swift */,
 				94AB47262704DFC900C3C805 /* Info.plist */,
 				24FE1B5527062F48001F2675 /* Business_Layer */,
@@ -444,6 +465,7 @@
 				24FE1B4A2705772D001F2675 /* LaunchScreen.storyboard in Resources */,
 				24FE1B5E270636B0001F2675 /* TheMark.jpg in Resources */,
 				24FE1B4B2705772D001F2675 /* Main.storyboard in Resources */,
+				94414B00276178ED001CBD13 /* loginbackground (1).jpeg in Resources */,
 				24FE1B60270636B0001F2675 /* TheStandard.jpg in Resources */,
 				24FE1B61270636B0001F2675 /* UH.jpg in Resources */,
 				24FE1B5F270636B0001F2675 /* SQ5.jpg in Resources */,
@@ -574,17 +596,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94414B022761791C001CBD13 /* HomeViewController.swift in Sources */,
 				94AE81BE2734F3A000BDF8D0 /* SearchResultsVC.swift in Sources */,
 				9434AA092724AEDF00E51FD0 /* CreateListingFinalVC.swift in Sources */,
 				9461EC70275CA4FC00979845 /* ConversationVC.swift in Sources */,
 				9461EC66275C661C00979845 /* SubleaseUserObject.swift in Sources */,
 				9434AA032724AE9700E51FD0 /* CreateListingAddressVC.swift in Sources */,
 				9461EC62275C521800979845 /* StartConversationVC.swift in Sources */,
+				94414AFE276178AF001CBD13 /* Utilities.swift in Sources */,
 				24FE1B5327062C57001F2675 /* SearchVC.swift in Sources */,
 				9434AA052724AEB200E51FD0 /* CreateListingPropertyVC.swift in Sources */,
 				9461EC6A275C932800979845 /* ConversationObject.swift in Sources */,
+				94414B0627617929001CBD13 /* MyAccountVC.swift in Sources */,
 				24FE1B5827062F48001F2675 /* StudentListingObject.swift in Sources */,
 				9461EC68275C7B5700979845 /* MessagingTasker.swift in Sources */,
+				94414B0A27629EBD001CBD13 /* MyListingsVC.swift in Sources */,
 				24FE1B5427062C57001F2675 /* ListingDetailVC.swift in Sources */,
 				94AB47192704DFC700C3C805 /* AppDelegate.swift in Sources */,
 				9461EC6E275C97E400979845 /* ConversationCell.swift in Sources */,
@@ -593,9 +619,11 @@
 				24FE1B5227062C57001F2675 /* SearchCell.swift in Sources */,
 				9434A9FD2724A47500E51FD0 /* BackendURL.swift in Sources */,
 				2420D0B127068EF100B80DB6 /* ChatVC.swift in Sources */,
+				94414B082761792F001CBD13 /* SignUpViewController.swift in Sources */,
 				9434AA072724AECE00E51FD0 /* CreateListingSubleaseVC.swift in Sources */,
 				9434A9FB2724A41900E51FD0 /* WebCallTasker.swift in Sources */,
 				94AB471B2704DFC700C3C805 /* SceneDelegate.swift in Sources */,
+				94414B0427617923001CBD13 /* LoginViewController.swift in Sources */,
 				9461EC64275C528500979845 /* MessagingStructs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
