@@ -13,7 +13,7 @@ protocol HandleLocationSearch {
     func searchedLocation(location: MKMapItem)
 }
 
-class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, HandleLocationSearch {
+class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, HandleLocationSearch, UITextFieldDelegate {
     
     @IBOutlet var mainView: UIView!
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
@@ -87,6 +87,11 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     
     let dropDown3 = DropDown()
     let dropDownValuesGender = ["Male", "Female", "No Preference"]
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     @IBAction func menuButtonTapped(_ sender: Any) {
         if (!menuButtonVisible) {
@@ -276,7 +281,13 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
           print("Selected item: \(item) at index: \(index)")
             self.genderpreferenceslabel.text = self.dropDown3.dataSource[index]
         }
-
+        
+        minBed.delegate = self
+        maxBed.delegate = self
+        minBath.delegate = self
+        maxBath.delegate = self
+        minRent.delegate = self
+        maxRent.delegate = self
     }
     
     @IBAction func filter(_ sender: UIButton) {
@@ -453,12 +464,19 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     }
     
     @IBAction func log_out(_ sender: Any) {
+        let loaderView: LoaderView = LoaderView(title: "Loading...", onView: self.dimmingView)
+        self.view.addSubview(loaderView)
+        loaderView.load()
         self.currentUser.logout(failure: {
-            let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                loaderView.stopLoading()
+                let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong. Please try again.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }, success: {
             DispatchQueue.main.async {
+                loaderView.stopLoading()
                 let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav1")
                 self.view.window?.rootViewController = navigationController
                 self.view.window?.makeKeyAndVisible()

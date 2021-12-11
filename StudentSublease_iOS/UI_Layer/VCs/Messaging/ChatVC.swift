@@ -13,6 +13,7 @@ class ChatVC: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate
     
     var currentUser: SubleaseUserObject!
     var listing: StudentListingObject!
+    var tenant: SubleaseUserObject!
     var sendingSender: Sender!
     var receivingSender: Sender!
     var messages = [MessageType]()
@@ -22,7 +23,12 @@ class ChatVC: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate
         super.viewDidLoad()
         self.currentUser = SubleaseUserObject.getUser(key: "currentUser")!
         self.sendingSender = Sender(senderId: String(self.currentUser.pk), displayName: self.currentUser.firstName + " " + self.currentUser.lastName, user: self.currentUser)
-        self.receivingSender = Sender(senderId: String(self.listing.lister.pk), displayName: self.listing.lister.firstName + " " + self.listing.lister.lastName, user: self.listing.lister)
+        if self.currentUser.pk == self.tenant.pk {
+            self.receivingSender = Sender(senderId: String(self.listing.lister.pk), displayName: self.listing.lister.firstName + " " + self.listing.lister.lastName, user: self.listing.lister)
+        } else {
+            self.receivingSender = Sender(senderId: String(self.tenant.pk), displayName: self.tenant.firstName + " " + self.tenant.lastName, user: self.tenant)
+        }
+        
         
         self.navigationItem.title = self.listing.title
                 

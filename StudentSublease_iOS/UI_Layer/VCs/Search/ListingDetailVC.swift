@@ -105,6 +105,7 @@ class ListingDetailVC: UIViewController {
         if segue.identifier == "startConversation" {
             if let destination = segue.destination as? StartConversationVC {
                 destination.listing = self.studentListing
+                destination.tenant = self.currentUser
             }
         }
     }

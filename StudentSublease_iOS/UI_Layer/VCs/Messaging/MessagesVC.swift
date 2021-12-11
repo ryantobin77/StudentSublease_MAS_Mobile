@@ -144,8 +144,8 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let conversation = self.conversations[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = ConversationVC()
-        vc.currentUser = self.currentUser
         vc.listing = conversation.listing
+        vc.tenant = conversation.tenant
         vc.conversation = conversation
         navigationController?.pushViewController(vc, animated: true)
     }

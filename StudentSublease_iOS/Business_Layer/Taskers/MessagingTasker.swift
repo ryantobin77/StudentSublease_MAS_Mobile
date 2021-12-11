@@ -56,11 +56,17 @@ class MessagingTasker: NSObject {
             let message_text = message["message"] as! String
             let dateStr = message["date"] as! String
             let date = self.convertStringToDate(dateStr: dateStr)
-            var messageObject = Message(sender: receiverSender, messageId: String(pk), sentDate: date, kind: .text(message_text))
+            print("===== Comparison =====")
+            print(senderPk)
+            print(senderSender.user.pk!)
             if senderSender.user.pk == senderPk {
-                messageObject = Message(sender: senderSender, messageId: String(pk), sentDate: date, kind: .text(message_text))
+                result.append(Message(sender: senderSender, messageId: String(pk), sentDate: date, kind: .text(message_text)))
+            } else {
+                print("===== Receiver =====")
+                print(receiverSender.user.pk)
+                result.append(Message(sender: receiverSender, messageId: String(pk), sentDate: date, kind: .text(message_text)))
             }
-            result.append(messageObject)
+            print("\n")
         }
         return result
     }

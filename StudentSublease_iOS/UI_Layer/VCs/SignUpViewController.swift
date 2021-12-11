@@ -16,13 +16,16 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    var dimmingView: UIView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        self.dimmingView.backgroundColor = .black
+        self.dimmingView.alpha = 0.0
+        self.view.addSubview(self.dimmingView)
         setUpElements()
-        
     }
     
     func setUpElements() {
@@ -48,22 +51,34 @@ class SignUpViewController: UIViewController {
         params["last_name"] = lastnameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         params["college"] = collegeTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         params["password"] = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-    
-        WebCallTasker().makePostRequest(forURL: BackendURL.SIGN_UP, withParams: params, failure: {DispatchQueue.main.async {
-            self.errorLabel.alpha = 1
-        }}, success: {(data, response) in if (response.statusCode != 201){DispatchQueue.main.async {
-            self.errorLabel.alpha = 1
-        }} else {transitionToHome()}})
+        let loaderView: LoaderView = LoaderView(title: "Loading...", onView: self.dimmingView)
+        self.view.addSubview(loaderView)
+        loaderView.load()
+        WebCallTasker().makePostRequest(forURL: BackendURL.SIGN_UP, withParams: params, failure: {
+            DispatchQueue.main.async {
+                loaderView.stopLoading()
+                self.errorLabel.alpha = 1
+            }
+        }, success: {(data, response) in
+            if (response.statusCode != 201) {
+                DispatchQueue.main.async {
+                    loaderView.stopLoading()
+                    self.errorLabel.alpha = 1
+                }
+            } else {
+                DispatchQueue.main.async {
+                    loaderView.stopLoading()
+                    transitionToHome()
+                }
+            }
+        })
       
         
         func transitionToHome() {
+            let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav2")
+            self.view.window?.rootViewController = navigationController
+            self.view.window?.makeKeyAndVisible()
             
-            DispatchQueue.main.async {
-                let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Nav2")
-                
-                self.view.window?.rootViewController = navigationController
-                self.view.window?.makeKeyAndVisible()
-            }
         }
         
     }

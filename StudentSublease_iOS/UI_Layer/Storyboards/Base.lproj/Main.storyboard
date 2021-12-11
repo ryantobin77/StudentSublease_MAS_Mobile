@@ -634,7 +634,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="Dxj-Yt-u5l"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Beds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mp-3V-7qd">
                                             <rect key="frame" x="184" y="0.0" width="72" height="34"/>
@@ -648,7 +648,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="yRO-bB-Hhp"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             <connections>
                                                 <action selector="maxBed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Tbf-Rd-wWm"/>
                                             </connections>
@@ -673,7 +673,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="Nbi-Ct-1Un"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Baths" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PF-l4-WqG">
                                             <rect key="frame" x="184" y="0.0" width="72" height="34"/>
@@ -687,7 +687,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="Ks7-95-mXV"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         </textField>
                                     </subviews>
                                 </stackView>
@@ -709,7 +709,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="xJ6-Ov-8bI"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Rent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kD8-5t-VEh">
                                             <rect key="frame" x="184" y="0.0" width="72" height="34"/>
@@ -723,7 +723,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="FsS-79-nr7"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         </textField>
                                     </subviews>
                                 </stackView>
@@ -2159,7 +2159,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="w8o-JJ-Daw"/>
+        <segue reference="5FW-mF-fTU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="building.2.fill" catalog="system" width="128" height="106"/>
