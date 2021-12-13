@@ -190,11 +190,11 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             self.locationSearchTable.currentLocation = location
+            self.resultSearchController?.searchBar.searchTextField.isEnabled = true
             guard let load = self.locationLoaderView else {
                 return
             }
             load.stopLoading()
-            self.resultSearchController?.searchBar.searchTextField.isEnabled = true
         }
     }
     
