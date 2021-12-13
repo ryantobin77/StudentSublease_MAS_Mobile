@@ -88,6 +88,8 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     let dropDown3 = DropDown()
     let dropDownValuesGender = ["Male", "Female", "No Preference"]
     
+    var locationLoaderView: LoaderView?
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -188,6 +190,11 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             self.locationSearchTable.currentLocation = location
+            guard let load = self.locationLoaderView else {
+                return
+            }
+            load.stopLoading()
+            self.resultSearchController?.searchBar.searchTextField.isEnabled = true
         }
     }
     
@@ -240,6 +247,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         locationSearchTable.handleLocationSearchDelegate = self
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
+        self.resultSearchController?.searchBar.searchTextField.isEnabled = false
         
         self.searchBar = resultSearchController!.searchBar
         self.searchBar.sizeToFit()
@@ -262,10 +270,10 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         endmonthview.layer.cornerRadius = 20
         
         
-        dropDown3.anchorView = genderpreferencesview
+        /*dropDown3.anchorView = genderpreferencesview
         dropDown3.dataSource = dropDownValuesGender
         dropDown3.direction = .bottom
-        genderpreferencesview.layer.cornerRadius = 20
+        genderpreferencesview.layer.cornerRadius = 20*/
         
         dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
@@ -277,10 +285,10 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
             self.endmonthlabel.text = self.dropDown2.dataSource[index]
         }
         
-        dropDown3.selectionAction = { [unowned self] (index: Int, item: String) in
+        /*dropDown3.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
             self.genderpreferenceslabel.text = self.dropDown3.dataSource[index]
-        }
+        }*/
         
         minBed.delegate = self
         maxBed.delegate = self
@@ -288,6 +296,10 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         maxBath.delegate = self
         minRent.delegate = self
         maxRent.delegate = self
+        
+        self.locationLoaderView = LoaderView(title: "Loading...", onView: self.dimmingView)
+        self.view.addSubview(self.locationLoaderView!)
+        self.locationLoaderView!.load()
     }
     
     @IBAction func filter(_ sender: UIButton) {
@@ -358,9 +370,9 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         dropDown2.show()
     }
     
-    @IBAction func genderpreferencesbutton(_ sender: Any) {
+    /*@IBAction func genderpreferencesbutton(_ sender: Any) {
         dropDown3.show()
-    }
+    }*/
     
     @IBAction func amenityButtonPressed(_ sender: Any) {
         let unselectedImage = UIImage(systemName: "circle")
@@ -434,9 +446,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
             amenities.append("Pet Friendly")
         }
         
-        
-        
-        
         let initialFilters = self.unfilteredResults.filter{
             $0.numBed >= realminbed
             && $0.numBed <= realmaxbed
@@ -459,6 +468,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
             }
             
         }
+        
         var realfilteredList: Array<StudentListingObject> = Array<StudentListingObject>()
         for result in filteredList {
             let listingAmenities = result.amenities ?? []

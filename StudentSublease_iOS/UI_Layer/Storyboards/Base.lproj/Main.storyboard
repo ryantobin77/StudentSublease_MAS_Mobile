@@ -515,8 +515,6 @@
                         <outlet property="endmonthview" destination="vck-w4-GeX" id="Bot-o2-a7K"/>
                         <outlet property="filtermenu" destination="W4P-UM-LPj" id="23c-3S-yat"/>
                         <outlet property="furnished" destination="8Al-e2-Cxs" id="MzL-26-dlU"/>
-                        <outlet property="genderpreferenceslabel" destination="Lx6-Ae-vBJ" id="Tnt-hH-rfK"/>
-                        <outlet property="genderpreferencesview" destination="Hsa-qi-VVK" id="5H5-jm-Rgw"/>
                         <outlet property="gym" destination="MuB-g2-Yac" id="F9k-MD-iC5"/>
                         <outlet property="kitchen" destination="PeD-oz-ego" id="PwY-kd-Yb9"/>
                         <outlet property="leadingConstraint" destination="du7-Uj-So5" id="2EM-YU-Cci"/>
@@ -659,9 +657,6 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                            <connections>
-                                                <action selector="maxBed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Tbf-Rd-wWm"/>
-                                            </connections>
                                         </textField>
                                     </subviews>
                                 </stackView>
@@ -766,40 +761,8 @@
                                 <constraint firstItem="4Ud-uH-ZCL" firstAttribute="top" secondItem="fwn-Ir-dXL" secondAttribute="top" id="frh-7S-Vj1"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsa-qi-VVK" userLabel="Gender Preferences">
-                            <rect key="frame" x="83.5" y="336" width="499.5" height="50"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3T-km-LEs">
-                                    <rect key="frame" x="0.0" y="0.0" width="499.5" height="50"/>
-                                    <connections>
-                                        <action selector="genderpreferencesbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYa-rd-G2t"/>
-                                    </connections>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gender Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lx6-Ae-vBJ">
-                                    <rect key="frame" x="99" y="14" width="153" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" red="0.93606847520000003" green="0.94557005169999997" blue="0.95283943410000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="T3T-km-LEs" secondAttribute="trailing" id="5W5-pX-ufX"/>
-                                <constraint firstAttribute="trailing" secondItem="T3T-km-LEs" secondAttribute="trailing" id="9x7-aK-MnF"/>
-                                <constraint firstItem="Lx6-Ae-vBJ" firstAttribute="centerX" secondItem="Hsa-qi-VVK" secondAttribute="centerX" id="Eoq-Nf-dmN"/>
-                                <constraint firstItem="T3T-km-LEs" firstAttribute="leading" secondItem="Hsa-qi-VVK" secondAttribute="leading" id="QbJ-zO-1p9"/>
-                                <constraint firstAttribute="bottom" secondItem="T3T-km-LEs" secondAttribute="bottom" id="RCU-oO-3qI"/>
-                                <constraint firstItem="T3T-km-LEs" firstAttribute="top" secondItem="Hsa-qi-VVK" secondAttribute="top" id="WG6-Or-3FA"/>
-                                <constraint firstItem="Lx6-Ae-vBJ" firstAttribute="centerY" secondItem="Hsa-qi-VVK" secondAttribute="centerY" id="hdH-Zl-7fo"/>
-                                <constraint firstAttribute="height" constant="50" id="hqn-IZ-s5R"/>
-                                <constraint firstAttribute="trailing" secondItem="T3T-km-LEs" secondAttribute="trailing" id="pRW-c8-UVw"/>
-                                <constraint firstAttribute="bottom" secondItem="T3T-km-LEs" secondAttribute="bottom" id="qVd-h6-LWb"/>
-                                <constraint firstItem="T3T-km-LEs" firstAttribute="leading" secondItem="Hsa-qi-VVK" secondAttribute="leading" id="sx4-oM-og9"/>
-                                <constraint firstItem="T3T-km-LEs" firstAttribute="top" secondItem="Hsa-qi-VVK" secondAttribute="top" id="uSL-rk-Wsb"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPV-ry-JIr" userLabel="Amenities">
-                            <rect key="frame" x="18" y="416" width="648" height="175"/>
+                            <rect key="frame" x="18" y="346" width="648" height="175"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A/C &amp; Heating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1f-xb-Q0C">
                                     <rect key="frame" x="21" y="2" width="96" height="18"/>
@@ -968,7 +931,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Txp-j2-dcA">
-                            <rect key="frame" x="258" y="571" width="150" height="45"/>
+                            <rect key="frame" x="258" y="551" width="150" height="45"/>
                             <color key="backgroundColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="257-Wf-cbT"/>
@@ -1024,21 +987,18 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="QPV-ry-JIr" firstAttribute="leading" secondItem="W4P-UM-LPj" secondAttribute="leading" constant="18" id="BOS-FQ-fsK"/>
-                        <constraint firstItem="Hsa-qi-VVK" firstAttribute="width" secondItem="W4P-UM-LPj" secondAttribute="width" multiplier="3:4" id="Btx-Dp-e3g"/>
                         <constraint firstItem="wfX-F3-c6F" firstAttribute="centerX" secondItem="q1L-Bt-xF5" secondAttribute="centerX" id="F7Y-Jy-2St"/>
                         <constraint firstItem="vck-w4-GeX" firstAttribute="width" secondItem="W4P-UM-LPj" secondAttribute="width" multiplier="3:4" id="JV2-Rz-hVy"/>
-                        <constraint firstItem="QPV-ry-JIr" firstAttribute="top" secondItem="Txp-j2-dcA" secondAttribute="bottom" constant="-200" id="Uqt-Fn-nRU"/>
                         <constraint firstItem="fwn-Ir-dXL" firstAttribute="centerX" secondItem="q1L-Bt-xF5" secondAttribute="centerX" id="WSg-kf-SIb"/>
+                        <constraint firstItem="Txp-j2-dcA" firstAttribute="top" secondItem="QPV-ry-JIr" secondAttribute="bottom" constant="30" id="Wfj-zs-3dN"/>
                         <constraint firstAttribute="trailing" secondItem="QPV-ry-JIr" secondAttribute="trailing" id="ZtZ-ue-gxb"/>
+                        <constraint firstItem="QPV-ry-JIr" firstAttribute="top" secondItem="vck-w4-GeX" secondAttribute="bottom" constant="30" id="ckF-KX-hnK"/>
                         <constraint firstItem="Txp-j2-dcA" firstAttribute="centerX" secondItem="q1L-Bt-xF5" secondAttribute="centerX" id="eyU-DO-kiJ"/>
                         <constraint firstItem="fwn-Ir-dXL" firstAttribute="top" secondItem="wfX-F3-c6F" secondAttribute="bottom" constant="20" id="hsc-Ar-dqL"/>
                         <constraint firstItem="vck-w4-GeX" firstAttribute="centerX" secondItem="q1L-Bt-xF5" secondAttribute="centerX" id="kPU-i1-9tU"/>
                         <constraint firstItem="vck-w4-GeX" firstAttribute="top" secondItem="fwn-Ir-dXL" secondAttribute="bottom" constant="20" id="mJj-co-wf4"/>
                         <constraint firstItem="wfX-F3-c6F" firstAttribute="top" secondItem="q1L-Bt-xF5" secondAttribute="top" constant="30" id="pEw-W5-g2c"/>
-                        <constraint firstItem="Hsa-qi-VVK" firstAttribute="centerX" secondItem="q1L-Bt-xF5" secondAttribute="centerX" id="tzQ-JL-geW"/>
                         <constraint firstItem="fwn-Ir-dXL" firstAttribute="width" secondItem="W4P-UM-LPj" secondAttribute="width" multiplier="3:4" id="xG5-vm-D5Z"/>
-                        <constraint firstItem="vck-w4-GeX" firstAttribute="top" secondItem="Hsa-qi-VVK" secondAttribute="bottom" constant="-120" id="y4P-Bj-yF0"/>
-                        <constraint firstItem="QPV-ry-JIr" firstAttribute="top" secondItem="Hsa-qi-VVK" secondAttribute="bottom" constant="30" id="ypT-p0-MHt"/>
                     </constraints>
                 </view>
             </objects>

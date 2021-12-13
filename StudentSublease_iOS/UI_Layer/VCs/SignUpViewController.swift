@@ -67,8 +67,14 @@ class SignUpViewController: UIViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    loaderView.stopLoading()
-                    transitionToHome()
+                    let user = SubleaseUserObject.parseJson(jsonData: data)!
+                    if user.saveUser(key: "currentUser") {
+                        loaderView.stopLoading()
+                        transitionToHome()
+                    } else {
+                        loaderView.stopLoading()
+                        self.errorLabel.alpha = 1
+                    }
                 }
             }
         })
