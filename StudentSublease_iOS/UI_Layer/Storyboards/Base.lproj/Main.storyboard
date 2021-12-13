@@ -508,12 +508,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ac" destination="NdD-Cw-gVx" id="teb-eg-qhw"/>
                         <outlet property="applyFilterButton" destination="Txp-j2-dcA" id="Vy1-qU-WKz"/>
+                        <outlet property="dishwasher" destination="WGK-7o-Hhp" id="dJ3-NN-T8G"/>
                         <outlet property="endmonthlabel" destination="fpj-VI-aKM" id="cJa-iL-gWx"/>
                         <outlet property="endmonthview" destination="vck-w4-GeX" id="Bot-o2-a7K"/>
                         <outlet property="filtermenu" destination="W4P-UM-LPj" id="23c-3S-yat"/>
+                        <outlet property="furnished" destination="8Al-e2-Cxs" id="MzL-26-dlU"/>
                         <outlet property="genderpreferenceslabel" destination="Lx6-Ae-vBJ" id="Tnt-hH-rfK"/>
                         <outlet property="genderpreferencesview" destination="Hsa-qi-VVK" id="5H5-jm-Rgw"/>
+                        <outlet property="gym" destination="MuB-g2-Yac" id="F9k-MD-iC5"/>
+                        <outlet property="kitchen" destination="PeD-oz-ego" id="PwY-kd-Yb9"/>
                         <outlet property="leadingConstraint" destination="du7-Uj-So5" id="2EM-YU-Cci"/>
                         <outlet property="mainView" destination="gaE-e5-oba" id="oOh-0k-sgm"/>
                         <outlet property="maxBath" destination="7Gf-48-JvG" id="NCM-2T-OKh"/>
@@ -522,11 +527,16 @@
                         <outlet property="minBath" destination="VYJ-ek-XUB" id="Q79-h0-a9O"/>
                         <outlet property="minBed" destination="8iO-pN-U1M" id="UEi-Tw-bek"/>
                         <outlet property="minRent" destination="D8g-IB-pOR" id="FTG-fS-Wxm"/>
+                        <outlet property="parking" destination="6xT-oo-IOj" id="b74-hl-9Ng"/>
+                        <outlet property="petfriendly" destination="pz4-Wj-HmZ" id="QZ8-bX-F97"/>
+                        <outlet property="pool" destination="KNV-9F-Z8M" id="jbh-PL-9ZC"/>
                         <outlet property="searchResultsTableView" destination="3vK-eD-BEx" id="Dq0-fP-hed"/>
                         <outlet property="startmonthlabel" destination="dDB-TD-Rsb" id="JD0-8o-qjn"/>
                         <outlet property="startmonthview" destination="fwn-Ir-dXL" id="Rxi-gC-cpF"/>
                         <outlet property="tableView2" destination="FjS-dM-DbI" id="Oqt-Ko-FdI"/>
                         <outlet property="trailingConstraint" destination="loE-ao-Vcm" id="S3K-ph-rFL"/>
+                        <outlet property="tv" destination="0MY-jg-nJr" id="isM-jB-0jz"/>
+                        <outlet property="washer" destination="Hto-4z-6Hr" id="cR6-rP-QPa"/>
                         <segue destination="ViV-fs-N3g" kind="show" identifier="viewListing" id="5FW-mF-fTU"/>
                     </connections>
                 </viewController>
@@ -610,7 +620,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="W4P-UM-LPj">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="573"/>
+                    <rect key="frame" x="0.0" y="0.0" width="666" height="573"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wfX-F3-c6F">
@@ -733,7 +743,7 @@
                             <rect key="frame" x="0.0" y="137" width="240" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ud-uH-ZCL">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="499.5" height="50"/>
                                     <connections>
                                         <action selector="startmonthbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kN9-7z-AZb"/>
                                     </connections>
@@ -757,10 +767,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsa-qi-VVK" userLabel="Gender Preferences">
-                            <rect key="frame" x="30" y="336" width="180" height="50"/>
+                            <rect key="frame" x="83.5" y="336" width="499.5" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3T-km-LEs">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="499.5" height="50"/>
                                     <connections>
                                         <action selector="genderpreferencesbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYa-rd-G2t"/>
                                     </connections>
@@ -789,7 +799,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPV-ry-JIr" userLabel="Amenities">
-                            <rect key="frame" x="18" y="416" width="222" height="175"/>
+                            <rect key="frame" x="18" y="416" width="648" height="175"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A/C &amp; Heating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1f-xb-Q0C">
                                     <rect key="frame" x="21" y="2" width="96" height="18"/>
@@ -958,7 +968,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Txp-j2-dcA">
-                            <rect key="frame" x="45" y="571" width="150" height="45"/>
+                            <rect key="frame" x="258" y="571" width="150" height="45"/>
                             <color key="backgroundColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="257-Wf-cbT"/>
@@ -975,10 +985,10 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vck-w4-GeX" userLabel="End Month">
-                            <rect key="frame" x="30" y="266" width="180" height="50"/>
+                            <rect key="frame" x="83.5" y="266" width="499.5" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAX-Kh-7Nz">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="499.5" height="50"/>
                                     <connections>
                                         <action selector="endmonthbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lor-bP-dIl"/>
                                     </connections>

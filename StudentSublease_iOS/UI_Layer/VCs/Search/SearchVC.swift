@@ -372,7 +372,20 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         }
     }
     
+    
+    @IBOutlet weak var ac: UIButton!
+    @IBOutlet weak var washer: UIButton!
+    @IBOutlet weak var kitchen: UIButton!
+    @IBOutlet weak var tv: UIButton!
+    @IBOutlet weak var dishwasher: UIButton!
+    @IBOutlet weak var furnished: UIButton!
+    @IBOutlet weak var parking: UIButton!
+    @IBOutlet weak var gym: UIButton!
+    @IBOutlet weak var pool: UIButton!
+    @IBOutlet weak var petfriendly: UIButton!
+    
     @IBAction func applyFilters(_ sender: UIButton) {
+        
         let minbed = minBed.text!
         let realminbed = Int(minbed) ?? 0
         let maxbed = maxBed.text!
@@ -388,6 +401,40 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
         let filterStartMonth = monthDict[startmonthlabel.text ?? "Start Month"]
         let filterEndMonth = monthDict[endmonthlabel.text ?? "End Month"]
         // let genderpreference = genderpreferenceslabel.text
+        
+        var amenities = [String]()
+        if (ac.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("A/C & Heating")
+        }
+        if (washer.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("Washer & Dryer")
+        }
+        if (kitchen.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("Kitchen")
+        }
+        if (tv.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("TV")
+        }
+        if (dishwasher.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("Dishwasher")
+        }
+        if (furnished.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("Furnished")
+        }
+        if (parking.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("Parking Available")
+        }
+        if (gym.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("Gym")
+        }
+        if (pool.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("Pool")
+        }
+        if (petfriendly.currentBackgroundImage == UIImage(systemName: "circle.fill")) {
+            amenities.append("Pet Friendly")
+        }
+        
+        
         
         
         let initialFilters = self.unfilteredResults.filter{
@@ -412,8 +459,20 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CL
             }
             
         }
+        var realfilteredList: Array<StudentListingObject> = Array<StudentListingObject>()
+        for result in filteredList {
+            let listingAmenities = result.amenities ?? []
+            let listingAmenitiesSet = Set(listingAmenities)
+            let amenitiesSet = Set(amenities)
+            
+            if (amenitiesSet.isSubset(of: listingAmenitiesSet)) {
+                realfilteredList.append(result)
+            }
+            
+        }
         
-        self.searchResults = filteredList
+        
+        self.searchResults = realfilteredList
         self.searchResultsTableView.reloadData()
         self.closeFilterMenu()
     }
